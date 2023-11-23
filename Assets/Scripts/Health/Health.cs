@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
+    [Header("Health")]
+    [SerializeField] public float maxHealth;
     public float currentHealth { get; private set; }
+    public bool isAlive = true;
+
+    [Header ("Components")]
+    [SerializeField] private Behaviour[] components;
     private Animator animator;
-    private bool isAlive = true;
 
     private void Awake()
     {
@@ -27,19 +31,21 @@ public class Health : MonoBehaviour
             {
                 animator.SetTrigger("die");
 
-                //Player
-                if(GetComponent<PlayerInput>() != null)
-                    GetComponent<PlayerInput>().enabled = false;
-
-                //Enemy
-                if(GetComponentInParent<EnemyPatrol>() != null)
-                    GetComponentInParent<EnemyPatrol>().enabled = false;
-
-                if (GetComponent<MeleeEnemy>() != null)
-                    GetComponent<MeleeEnemy>().enabled = false;
+                foreach(Behaviour component in components)
+                    component.enabled = false;
 
                 isAlive = false;
             }
         }
+    }
+
+    public void Heal(float value)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -6,8 +6,11 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
 
-    [Header ("Enemy")]
+    [Header ("Enemy Transform")]
     [SerializeField] private Transform enemy;
+
+    [Header("Enemy Animator")]
+    [SerializeField] private Animator animator;
 
     [Header ("Movement params")]
     [SerializeField] private float speed;
@@ -17,9 +20,6 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Idle Beahaviour")]
     [SerializeField] private float idleDuration;
     private float idleTimer;
-
-    [Header ("Enemy Animator")]
-    [SerializeField] private Animator animator;
 
     private void Awake()
     {

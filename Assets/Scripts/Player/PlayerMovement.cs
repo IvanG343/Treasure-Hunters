@@ -3,29 +3,46 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement Params")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] LayerMask groundLayer;
+
+    [Header("References")]
     private Rigidbody2D body;
     private Animator animator;
-    //private BoxCollider2D boxCollider;
     private CapsuleCollider2D capsuleCollider;
+
+    [Header("Knockback effect")]
+    [SerializeField] private float kbForce;
+    public float kbCounter;
+    public float kbTotalTime;
+    public bool knockFromRight;
 
     private void Awake()
     {
-        //Рефернсы
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //boxCollider = GetComponent<BoxCollider2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     //Функция движение игрока и прыжка (вызывается из скрипта PlayerInput)
     public void MovePlayer(float direction, bool jumpPressed)
     {
-        //Движение по горизонтали
-        body.velocity = new Vector2(direction * speed, body.velocity.y);
-        animator.SetBool("isRunning", direction != 0);
+        //Движение по горизонтали и эффект отбрасывания при получении урона
+        if (kbCounter <= 0)
+        {
+            body.velocity = new Vector2(direction * speed, body.velocity.y);
+            animator.SetBool("isRunning", direction != 0);
+        }
+        else
+        {
+            if (knockFromRight)
+                body.velocity = new Vector2(-kbForce, kbForce);
+            else
+                body.velocity = new Vector2(kbForce, kbForce);
+            kbCounter -= Time.deltaTime;
+        }
 
         //Флип спрайта при развороте
         if (direction > 0.01f)
@@ -34,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
 
         //Прыжок
-        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        if (jumpPressed && IsGrounded())
             Jump();
         animator.SetBool("grounded", IsGrounded());
     }
@@ -49,9 +66,8 @@ public class PlayerMovement : MonoBehaviour
     //Функция проверки если игрок стоит на земле
     public bool IsGrounded()
     {
-        //RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         RaycastHit2D raycastHit = Physics2D.CapsuleCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, capsuleCollider.direction,
-            0, Vector2.down,0.1f, groundLayer);
+            0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
 }

@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Header("Projectile Params")]
     [SerializeField] private float fireForce;
     private float direction;
     private bool hit;
+    private float damage;
     private float lifetime;
 
-    private Animator animator;
     private BoxCollider2D boxCollider;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -22,24 +22,28 @@ public class Projectile : MonoBehaviour
         float movementSpeed = fireForce * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
 
+        //Деактивирует снаряд если время жизни больше установленного
         lifetime += Time.deltaTime;
         if(lifetime > 5) gameObject.SetActive(false);
     }
 
+    //Проверка на столкновение с другим коллайдером, если это противник, то наносит урон и деактивируется
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hit = true;
         boxCollider.enabled = false;
-        animator.SetTrigger("embedded");
 
         if (collision.tag == "Enemy")
-            collision.GetComponent<Health>().TakeDamage(1);
+            collision.GetComponent<Health>().TakeDamage(damage);
+        Deactivate();
     }
 
-    public void SetDirection(float _direction) 
+    //Задаёт стартовые параметры для снаряда
+    public void SetDirection(float _direction, float _damage) 
     {
         lifetime = 0;
         direction = _direction;
+        damage = _damage;
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
