@@ -32,12 +32,25 @@ public class PlayerAttack : MonoBehaviour
     }
 
     //Получаем коллайдер противника если он находится в зоне действия удара и наносим урон
+    //Вызываем метод, чтобы оттолкнуть противника
     public void Attack()
     {
         animator.SetTrigger("attack");
         Collider2D enemyCollider = Physics2D.OverlapCircle(attackPoint.position, mAttackRange, enemyLayer);
         if(enemyCollider != null)
+        {
+            KnockbackEnemy(enemyCollider);
             enemyCollider.gameObject.GetComponent<Health>().TakeDamage(damage);
+        } 
+    }
+
+    private void KnockbackEnemy(Collider2D enemyCollider)
+    {
+        Rigidbody2D enemyRB = enemyCollider.GetComponent<Rigidbody2D>();
+        if (transform.position.x < enemyCollider.transform.position.x)
+            enemyRB.velocity = new Vector2(5, enemyRB.transform.position.y);
+        else
+            enemyRB.velocity = new Vector2(-5, enemyRB.transform.position.y);
     }
 
     //Задает положение снаряда и вызывает метод для его движения в нужном направлении

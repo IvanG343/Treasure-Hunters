@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider2D capsuleCollider;
 
     [Header("Knockback effect")]
-    [SerializeField] private float kbForce;
     public float kbCounter;
     public float kbTotalTime;
     public bool knockFromRight;
@@ -32,15 +31,15 @@ public class PlayerMovement : MonoBehaviour
         //Движение по горизонтали и эффект отбрасывания при получении урона
         if (kbCounter <= 0)
         {
-            body.velocity = new Vector2(direction * speed, body.velocity.y);
-            animator.SetBool("isRunning", direction != 0);
+        body.velocity = new Vector2(direction * speed, body.velocity.y);
+        animator.SetBool("isRunning", direction != 0);
         }
         else
         {
             if (knockFromRight)
-                body.velocity = new Vector2(-kbForce, kbForce);
+                body.velocity = new Vector2(-5, body.transform.position.y);
             else
-                body.velocity = new Vector2(kbForce, kbForce);
+                body.velocity = new Vector2(5, body.transform.position.y);
             kbCounter -= Time.deltaTime;
         }
 
@@ -54,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpPressed && IsGrounded())
             Jump();
         animator.SetBool("grounded", IsGrounded());
+
     }
 
     //Функция прыжка

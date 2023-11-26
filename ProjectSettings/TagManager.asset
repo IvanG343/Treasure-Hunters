@@ -52,6 +52,9 @@ TagManager:
   - name: Character
     uniqueID: 2799963687
     locked: 0
+  - name: Water
+    uniqueID: 2532449415
+    locked: 0
   - name: Traps
     uniqueID: 3999023615
     locked: 0

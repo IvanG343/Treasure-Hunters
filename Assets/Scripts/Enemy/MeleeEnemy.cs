@@ -53,10 +53,8 @@ public class MeleeEnemy : MonoBehaviour
             0, Vector2.left, 0, playerLayer);
 
         if(hit.collider != null)
-        { 
-            playerHealth = hit.transform.GetComponent<Health>();
-            playerMovement = hit.transform.GetComponent<PlayerMovement>();
-            playerTransform = hit.transform;
+        {
+            GetCollisionComponents(hit.collider);
         }
 
         return hit.collider != null;
@@ -76,19 +74,36 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (PlayerInSight())
         {
-            playerMovement.kbCounter = playerMovement.kbTotalTime;
-            if(playerTransform.position.x <= transform.position.x)
-                playerMovement.knockFromRight = true;
-            else
-                playerMovement.knockFromRight = false;
+            Knockback();
             playerHealth.TakeDamage(damage);
-        } 
+        }
     }
 
     //Ќаносит урон игроку при столкновении
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Player")
-            collision.GetComponent<Health>().TakeDamage(damage);
+        if (collision.gameObject.tag == "Player")
+        {
+            Collider2D collider = collision.gameObject.GetComponent<Collider2D>();
+            GetCollisionComponents(collider);
+            Knockback();
+            playerHealth.TakeDamage(damage);
+        }
+    }
+
+    private void GetCollisionComponents(Collider2D collisionObject)
+    {
+        playerHealth = collisionObject.transform.GetComponent<Health>();
+        playerMovement = collisionObject.transform.GetComponent<PlayerMovement>();
+        playerTransform = collisionObject.transform;
+    }
+
+    private void Knockback()
+    {
+        playerMovement.kbCounter = playerMovement.kbTotalTime;
+        if (playerTransform.position.x <= transform.position.x)
+            playerMovement.knockFromRight = true;
+        else
+            playerMovement.knockFromRight = false;
     }
 }
