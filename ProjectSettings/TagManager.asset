@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - SilverCoin
+  - GoldCoin
+  - Diamond
+  - SliderJointBorder
   layers:
   - Default
   - TransparentFX

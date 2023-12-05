@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4037075056302256672}
   m_Layer: 9
   m_Name: CoinGold
-  m_TagString: Untagged
+  m_TagString: GoldCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &414325217508369974
 SpriteRenderer:
@@ -157,4 +157,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   value: 100
-  scoreText: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: f26357e688c8bb743999b1d84b835a2b, type: 3}

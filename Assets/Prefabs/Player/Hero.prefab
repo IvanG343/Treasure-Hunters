@@ -71,7 +71,7 @@ Transform:
   - {fileID: 2288047307442926058}
   - {fileID: 8482351797305250662}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8542020590597231045
 SpriteRenderer:
@@ -112,7 +112,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1495003609
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f61b524b3686ca644a12cfd93bf7fe2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -185,7 +185,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -220,8 +220,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_GravityScale: 3
+  m_Material: {fileID: 6200000, guid: 597e2dfb79802c94a8c78929e3c90261, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -278,13 +278,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 7
+  jumpForce: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   kbCounter: 0
-  kbTotalTime: 0.2
+  kbTotalTime: 0.3
   knockFromRight: 0
+  jumpSound: {fileID: 8300000, guid: 573db428414bdc54ba686ee09fe026a2, type: 3}
 --- !u!114 &1408372427580020258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9aa2acfe466b274faca41f8d7bda33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   isAlive: 1
+  hurtSound: {fileID: 8300000, guid: 1c44eb6b310a73a409d845ecc833aa0d, type: 3}
+  dieSound: {fileID: 8300000, guid: 3e460537e55da044fba17bc26232463e, type: 3}
   components:
   - {fileID: 8369093627087369583}
 --- !u!114 &7970028306546601340
@@ -333,6 +336,7 @@ MonoBehaviour:
   - {fileID: 0}
   bulletDamage: 3
   attackCooldown: 0.5
+  meleeAttackSound: {fileID: 8300000, guid: 7234c73bfcb37e04bb25253b12bab402, type: 3}
 --- !u!1 &8216291580752011754
 GameObject:
   m_ObjectHideFlags: 0

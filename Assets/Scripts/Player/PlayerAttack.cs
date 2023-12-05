@@ -19,6 +19,9 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator animator;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip meleeAttackSound;
+
 
     private void Awake()
     {
@@ -41,6 +44,7 @@ public class PlayerAttack : MonoBehaviour
         {
             KnockbackEnemy(enemyCollider);
             enemyCollider.gameObject.GetComponent<Health>().TakeDamage(damage);
+            SoundManager.instance.PlaySound(meleeAttackSound);
         } 
     }
 
@@ -48,9 +52,9 @@ public class PlayerAttack : MonoBehaviour
     {
         Rigidbody2D enemyRB = enemyCollider.GetComponent<Rigidbody2D>();
         if (transform.position.x < enemyCollider.transform.position.x)
-            enemyRB.velocity = new Vector2(5, enemyRB.transform.position.y);
+            enemyRB.velocity = new Vector2(3, 2);
         else
-            enemyRB.velocity = new Vector2(-5, enemyRB.transform.position.y);
+            enemyRB.velocity = new Vector2(-3, 2);
     }
 
     //«адает положение снар€да и вызывает метод дл€ его движени€ в нужном направлении

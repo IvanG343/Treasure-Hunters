@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     public float kbTotalTime;
     public bool knockFromRight;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip jumpSound;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -37,9 +40,9 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             if (knockFromRight)
-                body.velocity = new Vector2(-5, body.transform.position.y);
+                body.velocity = new Vector2(-2, 1);
             else
-                body.velocity = new Vector2(5, body.transform.position.y);
+                body.velocity = new Vector2(2, 1);
             kbCounter -= Time.deltaTime;
         }
 
@@ -52,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         //Прыжок
         if (jumpPressed && IsGrounded())
             Jump();
+
         animator.SetBool("grounded", IsGrounded());
 
     }
@@ -61,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         body.velocity = new Vector2(body.velocity.x, jumpForce);
         animator.SetTrigger("jump");
+        SoundManager.instance.PlaySound(jumpSound);
     }
 
     //Функция проверки если игрок стоит на земле

@@ -15,6 +15,9 @@ public class MeleeEnemy : MonoBehaviour
     [Header("Player params")]
     [SerializeField] private LayerMask playerLayer;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip meleeAttackSound;
+
     [Header("References")]
     private Health playerHealth;
     private PlayerMovement playerMovement;
@@ -76,6 +79,7 @@ public class MeleeEnemy : MonoBehaviour
         {
             Knockback();
             playerHealth.TakeDamage(damage);
+            SoundManager.instance.PlaySound(meleeAttackSound);
         }
     }
 

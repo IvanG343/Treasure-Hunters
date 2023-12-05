@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8075075622095047193}
   m_Layer: 9
   m_Name: CoinSilver
-  m_TagString: Untagged
+  m_TagString: SilverCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5791469575006434420
 SpriteRenderer:
@@ -157,4 +157,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   value: 50
-  scoreText: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: f26357e688c8bb743999b1d84b835a2b, type: 3}

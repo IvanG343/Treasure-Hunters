@@ -16,7 +16,7 @@ public class Parallax : MonoBehaviour
         targetPreviousPostition = followingTarget.position;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector3 delta = followingTarget.position - targetPreviousPostition;
 

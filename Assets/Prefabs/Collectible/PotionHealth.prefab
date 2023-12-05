@@ -167,4 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   value: 0
-  scoreText: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 2bfac1f361c66c04c82503ad456c5f42, type: 3}

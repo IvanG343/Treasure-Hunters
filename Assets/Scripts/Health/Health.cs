@@ -8,6 +8,10 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
     public bool isAlive = true;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip dieSound;
+
     [Header ("Components")]
     [SerializeField] private Behaviour[] components;
     private Animator animator;
@@ -25,17 +29,20 @@ public class Health : MonoBehaviour
         if(currentHealth > 0)
         {
             animator.SetTrigger("hurt");
+            SoundManager.instance.PlaySound(hurtSound);
         }
         else
         {
             if(isAlive)
             {
+                isAlive = false;
                 animator.SetTrigger("die");
+                SoundManager.instance.PlaySound(dieSound);
 
                 foreach(Behaviour component in components)
                     component.enabled = false;
-
-                isAlive = false;
+                if(gameObject.tag == "Player")
+                    GameManager.instance.LevelFailed();
             }
         }
     }

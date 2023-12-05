@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Gather
+    m_ConditionEvent: Collected
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6554232633194589457}
@@ -61,7 +61,7 @@ AnimatorController:
   m_Name: CoinGold
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Gather
+  - m_Name: Collected
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
