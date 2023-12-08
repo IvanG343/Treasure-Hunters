@@ -2,27 +2,43 @@ using UnityEngine;
 
 public class SliderPlatform : MonoBehaviour
 {
-    private SliderJoint2D platform;
-    private JointMotor2D motor;
-
     [SerializeField] private float motorSpeed;
-
-    private void Awake()
-    {
-        platform = GetComponent<SliderJoint2D>();
-    }
+    [SerializeField] private Transform startPos;
+    [SerializeField] private Transform endPos;
+    private bool movePositive;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        motor = platform.motor;
-        if(collision.tag == "SliderJointBorder")
+        if (collision.tag == "SliderJointBorder")
         {
-            if (collision.name == "BottomEdge")
-                motor.motorSpeed = motorSpeed * -1;
+            if (collision.name == "StartPos")
+                movePositive = false;
             else
-                motor.motorSpeed = motorSpeed;
+                movePositive = true;
         }
-        platform.motor = motor;
-        
+    }
+
+    private void Update()
+    {
+        if(movePositive)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, startPos.position, motorSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, endPos.position, motorSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            collision.transform.parent = null;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            collision.transform.parent = transform;
     }
 }

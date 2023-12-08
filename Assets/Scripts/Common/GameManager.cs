@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip looseSound;
+    [SerializeField] private AudioClip mapFound;
 
     [Header("References")]
     [SerializeField] private ShipController shipController;
@@ -67,7 +68,8 @@ public class GameManager : MonoBehaviour
     {
         piecesOfMap++;
 
-        if(piecesOfMap >= 4)
+        if (piecesOfMap >= 4)
+            SoundManager.instance.PlaySound(mapFound);
             shipController.SetLevelComplete();
     }
 

@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1495003609
   m_SortingLayer: -3
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b4997e7c8525da2478f52aa21aa60fa3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -196,6 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   isAlive: 1
+  invDuration: 0
+  flashes: 0
   hurtSound: {fileID: 8300000, guid: 1c44eb6b310a73a409d845ecc833aa0d, type: 3}
   dieSound: {fileID: 8300000, guid: 3e460537e55da044fba17bc26232463e, type: 3}
   components:

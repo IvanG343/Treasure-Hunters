@@ -27,6 +27,7 @@ public class Collectible : MonoBehaviour
             switch (itemType)
             {
                 case 1:
+                    itemCollider.enabled = false;
                     GameManager.instance.AddScore(gameObject.tag, value);
                     animator.SetTrigger("Collected");
                     SoundManager.instance.PlaySound(pickupSound);
@@ -34,18 +35,19 @@ public class Collectible : MonoBehaviour
                 case 2:
                     if (playerHealth.currentHealth < playerHealth.maxHealth)
                     {
+                        itemCollider.enabled = false;
                         playerHealth.Heal(1);
                         animator.SetTrigger("Collected");
                         SoundManager.instance.PlaySound(pickupSound);
                     }
                     break;
                 case 3:
+                    itemCollider.enabled = false;
                     GameManager.instance.CollectMapPieces();
                     animator.SetTrigger("Collected");
                     SoundManager.instance.PlaySound(pickupSound);
                     break;
             }
-            itemCollider.enabled = false;
         }
     }
 

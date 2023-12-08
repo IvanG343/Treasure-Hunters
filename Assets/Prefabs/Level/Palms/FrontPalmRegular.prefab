@@ -31,7 +31,7 @@ Transform:
   - {fileID: 5779693741601724969}
   - {fileID: 6569767414029983354}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7865465815899451109
 GameObject:
@@ -103,9 +103,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -195328923
+  m_SortingLayer: -4
+  m_SortingOrder: 1
   m_Sprite: {fileID: -959062231, guid: 209b0086c0b326742b19d41a1508348f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -176,6 +176,18 @@ PrefabInstance:
     - target: {fileID: 6991035572178364613, guid: feb4b64befecb8943abd0b9ef52f5478, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875108038396782906, guid: feb4b64befecb8943abd0b9ef52f5478, type: 3}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875108038396782906, guid: feb4b64befecb8943abd0b9ef52f5478, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875108038396782906, guid: feb4b64befecb8943abd0b9ef52f5478, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -195328923
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

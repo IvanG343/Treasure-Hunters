@@ -6,7 +6,7 @@ public class DeathZone : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            GameManager.instance.LevelFailed();
+            collision.gameObject.GetComponent<Health>().TakeDamage(100);
         }
     }
 }

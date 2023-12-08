@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
     {
         animator.SetTrigger("attack");
         Collider2D enemyCollider = Physics2D.OverlapCircle(attackPoint.position, mAttackRange, enemyLayer);
-        if(enemyCollider != null)
+        if(enemyCollider != null && enemyCollider.tag != "Traps")
         {
             KnockbackEnemy(enemyCollider);
             enemyCollider.gameObject.GetComponent<Health>().TakeDamage(damage);

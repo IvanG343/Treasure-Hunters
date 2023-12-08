@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2472242520705093250, guid: dd9e18038a7f1f0499069bb37776de1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2472242520705093250, guid: dd9e18038a7f1f0499069bb37776de1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2472242520705093250, guid: dd9e18038a7f1f0499069bb37776de1f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -100,15 +100,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 66257918345279746, guid: e0129ecceea1cc34a9f5db1e8db5dfdb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.38
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 1174602578334169313, guid: e0129ecceea1cc34a9f5db1e8db5dfdb, type: 3}
       propertyPath: m_Name
-      value: EnemyPatrolStar Variant
+      value: EnemyPatrolStar
       objectReference: {fileID: 0}
     - target: {fileID: 2936461605743345713, guid: e0129ecceea1cc34a9f5db1e8db5dfdb, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2936461605743345713, guid: e0129ecceea1cc34a9f5db1e8db5dfdb, type: 3}
       propertyPath: m_LocalPosition.x

@@ -71,7 +71,7 @@ Transform:
   - {fileID: 2288047307442926058}
   - {fileID: 8482351797305250662}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8542020590597231045
 SpriteRenderer:
@@ -179,13 +179,13 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 2772479059193057019}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 597e2dfb79802c94a8c78929e3c90261, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4864
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -221,7 +221,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 597e2dfb79802c94a8c78929e3c90261, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -298,12 +298,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9aa2acfe466b274faca41f8d7bda33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   isAlive: 1
+  invDuration: 2
+  flashes: 3
   hurtSound: {fileID: 8300000, guid: 1c44eb6b310a73a409d845ecc833aa0d, type: 3}
   dieSound: {fileID: 8300000, guid: 3e460537e55da044fba17bc26232463e, type: 3}
   components:
   - {fileID: 8369093627087369583}
+  - {fileID: 1361181809932577186}
+  - {fileID: 3350789657403796664}
 --- !u!114 &7970028306546601340
 MonoBehaviour:
   m_ObjectHideFlags: 0

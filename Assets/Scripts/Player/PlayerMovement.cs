@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x, jumpForce);
-        animator.SetTrigger("jump");
+        //animator.SetTrigger("jump");
         SoundManager.instance.PlaySound(jumpSound);
     }
 

@@ -8,6 +8,12 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
     public bool isAlive = true;
 
+    [Header("Invulnerability")]
+    [SerializeField] private float invDuration;
+    [SerializeField] private int flashes;
+    private SpriteRenderer playerSprite;
+    public bool isInv { get; private set; }
+
     [Header("SFX")]
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip dieSound;
@@ -20,6 +26,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(float damage)
@@ -29,6 +36,7 @@ public class Health : MonoBehaviour
         if(currentHealth > 0)
         {
             animator.SetTrigger("hurt");
+            StartCoroutine(Invulnerability());
             SoundManager.instance.PlaySound(hurtSound);
         }
         else
@@ -42,9 +50,27 @@ public class Health : MonoBehaviour
                 foreach(Behaviour component in components)
                     component.enabled = false;
                 if(gameObject.tag == "Player")
+                {
                     GameManager.instance.LevelFailed();
+                }
+                    
             }
         }
+    }
+
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, true);
+        isInv = true;
+        for (int i = 0; i < flashes; i++)
+        {
+            playerSprite.color = new Color(1, 1, 1, 0.5f);
+            yield return new WaitForSeconds(invDuration / (flashes * 2));
+            playerSprite.color = Color.white;
+            yield return new WaitForSeconds(invDuration / (flashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(7, 8, false);
+        isInv = false;
     }
 
     public void Heal(float value)

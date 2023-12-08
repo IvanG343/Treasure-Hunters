@@ -10,6 +10,8 @@ TagManager:
   - GoldCoin
   - Diamond
   - SliderJointBorder
+  - Canon
+  - Traps
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - Enemy
   - Collectible
   - Projectile
-  - 
-  - 
+  - Canon
+  - FloorTraps
   - 
   - 
   - 
