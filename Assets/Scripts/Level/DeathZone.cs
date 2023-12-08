@@ -6,7 +6,7 @@ public class DeathZone : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(100);
+            collision.gameObject.GetComponent<Health>().TakeDamage(100, gameObject.transform);
         }
     }
 }

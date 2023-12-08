@@ -21,17 +21,20 @@ public class Health : MonoBehaviour
     [Header ("Components")]
     [SerializeField] private Behaviour[] components;
     private Animator animator;
+    private KnockbackEffect knockbackEffect;
 
     private void Awake()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         playerSprite = GetComponent<SpriteRenderer>();
+        knockbackEffect = GetComponent<KnockbackEffect>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Transform _sender)
     {
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        knockbackEffect.Knockback(_sender);
 
         if(currentHealth > 0)
         {
@@ -49,11 +52,9 @@ public class Health : MonoBehaviour
 
                 foreach(Behaviour component in components)
                     component.enabled = false;
+
                 if(gameObject.tag == "Player")
-                {
                     GameManager.instance.LevelFailed();
-                }
-                    
             }
         }
     }

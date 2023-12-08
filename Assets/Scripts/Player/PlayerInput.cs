@@ -20,12 +20,12 @@ public class PlayerInput : MonoBehaviour
         bool jumpPressed = Input.GetButtonDown("Jump");
         playerMovement.MovePlayer(horizontalDirection, jumpPressed);
 
-        //Стрельба
-        //if (Input.GetButtonDown("Fire2"))
-        //    PlayerAttack.RangeAttack();
-
         //Атака
         if (Input.GetButtonDown("Fire1"))
             PlayerAttack.Attack();
+
+        //Стрельба
+        //if (Input.GetButtonDown("Fire2"))
+        //    PlayerAttack.RangeAttack();
     }
 }

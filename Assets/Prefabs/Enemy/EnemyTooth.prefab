@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8007657641550425732}
   - component: {fileID: 8895819019192072445}
   - component: {fileID: 8195891282738783318}
+  - component: {fileID: 4895868332060726096}
   m_Layer: 8
   m_Name: EnemyTooth
   m_TagString: Enemy
@@ -167,10 +168,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -224,3 +225,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   meleeAttackSound: {fileID: 8300000, guid: 2e05026ed5c1a4842a21dd298c75b451, type: 3}
+--- !u!114 &4895868332060726096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594892361630848423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df2f013a554cfe4f9fe376b6a835c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  kbCounter: 0
+  kbTotalTime: 0

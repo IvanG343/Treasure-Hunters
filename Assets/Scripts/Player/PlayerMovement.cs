@@ -13,11 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private CapsuleCollider2D capsuleCollider;
 
-    [Header("Knockback effect")]
-    public float kbCounter;
-    public float kbTotalTime;
-    public bool knockFromRight;
-
     [Header("SFX")]
     [SerializeField] private AudioClip jumpSound;
 
@@ -31,20 +26,9 @@ public class PlayerMovement : MonoBehaviour
     //Функция движение игрока и прыжка (вызывается из скрипта PlayerInput)
     public void MovePlayer(float direction, bool jumpPressed)
     {
-        //Движение по горизонтали и эффект отбрасывания при получении урона
-        if (kbCounter <= 0)
-        {
+        //Движение по горизонтали
         body.velocity = new Vector2(direction * speed, body.velocity.y);
         animator.SetBool("isRunning", direction != 0);
-        }
-        else
-        {
-            if (knockFromRight)
-                body.velocity = new Vector2(-2, 1);
-            else
-                body.velocity = new Vector2(2, 1);
-            kbCounter -= Time.deltaTime;
-        }
 
         //Флип спрайта при развороте
         if (direction > 0.01f)
@@ -57,14 +41,12 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
         animator.SetBool("grounded", IsGrounded());
-
     }
 
     //Функция прыжка
     private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x, jumpForce);
-        //animator.SetTrigger("jump");
         SoundManager.instance.PlaySound(jumpSound);
     }
 

@@ -23,7 +23,7 @@ public class CannonBall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(1);
+            collision.gameObject.GetComponent<Health>().TakeDamage(1, gameObject.transform);
             animator.SetTrigger("Hit");
         }
         else

@@ -20,8 +20,6 @@ public class MeleeEnemy : MonoBehaviour
 
     [Header("References")]
     private Health playerHealth;
-    private PlayerMovement playerMovement;
-    private Transform playerTransform;
     private Animator animator;
     private EnemyPatrol enemyPatrol;
 
@@ -56,9 +54,7 @@ public class MeleeEnemy : MonoBehaviour
             0, Vector2.left, 0, playerLayer);
 
         if(hit.collider != null)
-        {
-            GetCollisionComponents(hit.collider);
-        }
+            playerHealth = hit.transform.GetComponent<Health>();
 
         return hit.collider != null;
     }
@@ -77,8 +73,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (PlayerInSight())
         {
-            Knockback();
-            playerHealth.TakeDamage(damage);
+            playerHealth.TakeDamage(damage, gameObject.transform);
             SoundManager.instance.PlaySound(meleeAttackSound);
         }
     }
@@ -87,27 +82,6 @@ public class MeleeEnemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
-            Collider2D collider = collision.gameObject.GetComponent<Collider2D>();
-            GetCollisionComponents(collider);
-            Knockback();
-            playerHealth.TakeDamage(damage);
-        }
-    }
-
-    private void GetCollisionComponents(Collider2D collisionObject)
-    {
-        playerHealth = collisionObject.transform.GetComponent<Health>();
-        playerMovement = collisionObject.transform.GetComponent<PlayerMovement>();
-        playerTransform = collisionObject.transform;
-    }
-
-    private void Knockback()
-    {
-        playerMovement.kbCounter = playerMovement.kbTotalTime;
-        if (playerTransform.position.x <= transform.position.x)
-            playerMovement.knockFromRight = true;
-        else
-            playerMovement.knockFromRight = false;
+            collision.gameObject.GetComponent<Health>().TakeDamage(damage, gameObject.transform);
     }
 }
