@@ -3,7 +3,9 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     [Header("Item Params")]
+    //1 - Treasures; 2 - Health potions; 3 - Map; 4 - Golden Skull;
     [SerializeField] private int itemType;
+    //Coin cost; Map pieces;
     [SerializeField] private int value;
 
     [SerializeField] private AudioClip pickupSound;
@@ -43,7 +45,7 @@ public class Collectible : MonoBehaviour
                     break;
                 case 3:
                     itemCollider.enabled = false;
-                    GameManager.instance.CollectMapPieces();
+                    GameManager.instance.CollectMapPieces(value);
                     animator.SetTrigger("Collected");
                     SoundManager.instance.PlaySound(pickupSound);
                     break;

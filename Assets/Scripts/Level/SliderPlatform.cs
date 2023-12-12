@@ -29,16 +29,4 @@ public class SliderPlatform : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, endPos.position, motorSpeed * Time.deltaTime);
         }
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-            collision.transform.parent = null;
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-            collision.transform.parent = transform;
-    }
 }

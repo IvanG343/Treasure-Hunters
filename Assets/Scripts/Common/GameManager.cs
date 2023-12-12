@@ -64,9 +64,9 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    public void CollectMapPieces()
+    public void CollectMapPieces(int count)
     {
-        piecesOfMap++;
+        piecesOfMap += count;
 
         if (piecesOfMap >= 4)
             SoundManager.instance.PlaySound(mapFound);

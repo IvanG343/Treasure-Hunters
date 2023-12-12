@@ -5,11 +5,13 @@ public class KnockbackEffect : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     private PlayerInput playerInput;
+    private Health playerHealth;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        playerHealth = GetComponent<Health>();
     }
 
     public void Knockback(Transform sender)
@@ -26,6 +28,7 @@ public class KnockbackEffect : MonoBehaviour
     {
         playerInput.enabled = false;
         yield return new WaitForSeconds(0.3f);
-        playerInput.enabled = true;
+        if(playerHealth.isAlive)
+            playerInput.enabled = true;
     }
 }

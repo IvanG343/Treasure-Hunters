@@ -34,7 +34,8 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage, Transform _sender)
     {
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        knockbackEffect.Knockback(_sender);
+        if(_sender.gameObject.layer != 13)
+            knockbackEffect.Knockback(_sender);
 
         if(currentHealth > 0)
         {

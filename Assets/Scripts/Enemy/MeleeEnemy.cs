@@ -71,7 +71,7 @@ public class MeleeEnemy : MonoBehaviour
     //Вызывает эффект кнокбэка у игрока
     private void DamagePlayer()
     {
-        if (PlayerInSight())
+        if (PlayerInSight() && !playerHealth.isInv)
         {
             playerHealth.TakeDamage(damage, gameObject.transform);
             SoundManager.instance.PlaySound(meleeAttackSound);
@@ -83,5 +83,6 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
             collision.gameObject.GetComponent<Health>().TakeDamage(damage, gameObject.transform);
+            
     }
 }

@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1361181809932577186}
   - component: {fileID: 1408372427580020258}
   - component: {fileID: 7970028306546601340}
+  - component: {fileID: 8343771032683291900}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Player
@@ -228,7 +229,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -282,9 +283,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  kbCounter: 0
-  kbTotalTime: 0.3
-  knockFromRight: 0
   jumpSound: {fileID: 8300000, guid: 573db428414bdc54ba686ee09fe026a2, type: 3}
 --- !u!114 &1408372427580020258
 MonoBehaviour:
@@ -306,7 +304,6 @@ MonoBehaviour:
   dieSound: {fileID: 8300000, guid: 3e460537e55da044fba17bc26232463e, type: 3}
   components:
   - {fileID: 8369093627087369583}
-  - {fileID: 1361181809932577186}
   - {fileID: 3350789657403796664}
 --- !u!114 &7970028306546601340
 MonoBehaviour:
@@ -326,21 +323,20 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  firePoint: {fileID: 2288047307442926058}
-  projectiles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bulletDamage: 3
-  attackCooldown: 0.5
   meleeAttackSound: {fileID: 8300000, guid: 7234c73bfcb37e04bb25253b12bab402, type: 3}
+--- !u!114 &8343771032683291900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772479059193057019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df2f013a554cfe4f9fe376b6a835c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2858209223694451546}
 --- !u!1 &8216291580752011754
 GameObject:
   m_ObjectHideFlags: 0
