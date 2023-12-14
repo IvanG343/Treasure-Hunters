@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
@@ -12,6 +13,7 @@ public class ShipController : MonoBehaviour
     [Header("Player")]
     [SerializeField] private PlayerInput input;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private CinemachineVirtualCamera vcam;
 
     public bool levelComplete;
     private bool playerOnBoard;
@@ -28,8 +30,10 @@ public class ShipController : MonoBehaviour
         collision.transform.parent = transform;
         playerOnBoard = true;
         input.enabled = false;
+        vcam.Follow = null;
 
         playerAnimator.SetBool("isRunning", false);
+        playerAnimator.SetBool("grounded", true);
         sailAnimator.SetTrigger("start");
 
         GameManager.instance.LevelComplete();

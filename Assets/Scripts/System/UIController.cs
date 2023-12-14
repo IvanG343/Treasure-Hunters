@@ -14,7 +14,11 @@ public class UIController : MonoBehaviour
 
     public void OnLevelBtnClick(int id)
     {
-        SceneManager.LoadScene(id);
+        if(id > (SceneManager.sceneCountInBuildSettings -1))
+            SceneManager.LoadScene(0);
+        else
+            SceneManager.LoadScene(id);
+
     }
 
     public void OnMenuBtnClick()

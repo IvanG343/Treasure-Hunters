@@ -88,30 +88,4 @@ public class GameManager : MonoBehaviour
         looseScreen.SetActive(true);
         SoundManager.instance.PlaySound(looseSound);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    //private void ShowDebugInfo()
-    //{
-    //    Debug.Log($"Total silver on level: {totalSilver}, gathered: {gatheredSilver}, ratio: {gatheredSilver / totalSilver * 100}");
-    //    Debug.Log($"Total silver on level: {totalGold}, gathered: {gatheredGold}, ratio: {gatheredGold / totalGold * 100}");
-    //    Debug.Log($"Total silver on level: {totalDiamonds}, gathered: {gatheredDiamonds}, ratio: {gatheredDiamonds / totalDiamonds * 100}");
-    //}
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            //ShowDebugInfo();
-        }
-    }
 }
