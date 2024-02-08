@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
         playerMovement.MovePlayer(horizontalDirection, jumpPressed);
 
         //Атака
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.RightControl))
             PlayerAttack.Attack();
 
         //Стрельба
